@@ -8,7 +8,7 @@ import java.math.BigDEcimal;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-public class Snaketest {
+public class SnakeTest {
   @test
   public void testSnakeBasicProperties() {
     Snake s = new Snake (PetType.EXOTIC, new BigDecimal("99.99"), Gender.Male,7);
