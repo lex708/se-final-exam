@@ -41,6 +41,41 @@ public class PetStoreTest
     {
         assertEquals(5, petStore.getPetsForSale().size(),"Inventory counts are off!");
     }
+@Test 
+@DisplayName("Pet toString branch Converage Test")
+public void petToStringBranchConerageTest() {
+
+    //No pet store ID
+    Pet pet1 = new Pet(PetType.DOG, new BigDecimal("10.00), Gender.FEMALE);
+    String out1 = pet1.toString();
+    assertTrue(out1.contains("gender'));
+    assertFalse(out1.contains("pet store id));
+
+    //with pet store ID
+    Pet pet2 = new Pet(PetType.DOG, new BigDecimal("10.00", Gender.MALE, 5);
+    String out2 = pet2.toString();
+    assertTrue(out2.contains("pet store id"));
+    }
+}
+    @Test
+    @DisplayName("Add and Sell Snake Test")
+    public void addAndSellSnakeTest() throws Exception {
+        int sizeBefore = petStore.getPetsForSale().size();
+
+        Snake snake = new Snake(
+            PetType.EXOTIC,
+            new BigDecimal ("55.00"),
+            Gender.MALE,
+            99
+    );
+        petStore.addPetInventoryItem(snake);
+        assertEquals(sizeBefore + 1, petStore.getPetsForSale().size());
+
+        petStore.soldPetItem(snake);
+        assertEquals(sizeBefore, petStore.getPetsForSale().size());
+
+    }
+        
 
     @Test
     @DisplayName("Print Inventory Test")
