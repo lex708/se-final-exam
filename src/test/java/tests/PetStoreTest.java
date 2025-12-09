@@ -55,7 +55,7 @@ public void petToStringBranchConerageTest() {
     Pet pet2 = new Pet(PetType.DOG, new BigDecimal("10.00", Gender.MALE, 5);
     String out2 = pet2.toString();
     assertTrue(out2.contains("pet store id"));
-    }
+
 }
     @Test
     @DisplayName("Add and Sell Snake Test")
