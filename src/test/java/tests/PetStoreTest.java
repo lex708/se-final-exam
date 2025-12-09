@@ -43,15 +43,15 @@ public class PetStoreTest
     }
 @Test 
 @DisplayName("Pet toString branch Converage Test")
-public void petToStringBranchConerageTest() {
+public void petToStringBranchCoverageTest() {
 
     //No pet store ID
     Pet pet1 = new Pet(PetType.DOG, new BigDecimal("10.00), Gender.FEMALE);
     String out1 = pet1.toString();
-    assertTrue(out1.contains("gender'));
-    assertFalse(out1.contains("pet store id));
+    assertTrue(out1.contains("gender"));
+    assertFalse(out1.contains("pet store id"));
 
-    //with pet store ID
+    //With pet store ID
     Pet pet2 = new Pet(PetType.DOG, new BigDecimal("10.00", Gender.MALE, 5);
     String out2 = pet2.toString();
     assertTrue(out2.contains("pet store id"));
