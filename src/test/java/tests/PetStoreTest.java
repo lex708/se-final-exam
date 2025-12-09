@@ -42,7 +42,7 @@ public class PetStoreTest
         assertEquals(5, petStore.getPetsForSale().size(),"Inventory counts are off!");
     }
 @Test 
-@DisplayName("Pet toString branch Converage Test")
+@DisplayName("Pet toString BranchCoverage Test")
 public void petToStringBranchCoverageTest() {
 
     //No pet store ID
