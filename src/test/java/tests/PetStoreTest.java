@@ -1,11 +1,14 @@
 package tests;
 
 import animals.AnimalType;
+import animals.petstore.pet.Pet;
+import animals.petstore.pet.attributes.PetType;
 import animals.petstore.pet.attributes.Breed;
 import animals.petstore.pet.attributes.Gender;
 import animals.petstore.pet.attributes.Skin;
 import animals.petstore.pet.types.Cat;
 import animals.petstore.pet.types.Dog;
+import animals.petstore.pet.types.Snake;
 import animals.petstore.store.DuplicatePetStoreRecordException;
 import animals.petstore.store.PetNotFoundSaleException;
 import animals.petstore.store.PetStore;
@@ -41,41 +44,45 @@ public class PetStoreTest
     {
         assertEquals(5, petStore.getPetsForSale().size(),"Inventory counts are off!");
     }
-@Test 
-@DisplayName("Pet toString BranchCoverage Test")
-public void petToStringBranchCoverageTest() {
 
-    //No pet store ID
-    Pet pet1 = new Pet(PetType.DOG, new BigDecimal("10.00), Gender.FEMALE);
-    String out1 = pet1.toString();
-    assertTrue(out1.contains("gender"));
-    assertFalse(out1.contains("pet store id"));
+    @Test
+    @DisplayName("Pet toString Branch Coverage Test")
+    public void petToStringBranchCoverageTest() {
 
-    //With pet store ID
-    Pet pet2 = new Pet(PetType.DOG, new BigDecimal("10.00", Gender.MALE, 5);
-    String out2 = pet2.toString();
-    assertTrue(out2.contains("pet store id"));
+        // Without petStoreId
+        Pet pet1 = new Pet(PetType.DOG, new BigDecimal("10.00"), Gender.FEMALE);
+        String out1 = pet1.toString();
+        assertTrue(out1.contains("gender"));
+        assertFalse(out1.contains("pet store id"));
 
-}
+        // With petStoreId
+        Pet pet2 = new Pet(PetType.DOG, new BigDecimal("10.00"), Gender.MALE, 5);
+        String out2 = pet2.toString();
+        assertTrue(out2.contains("pet store id"));
+    }
+
     @Test
     @DisplayName("Add and Sell Snake Test")
     public void addAndSellSnakeTest() throws Exception {
-        int sizeBefore = petStore.getPetsForSale().size();
+
+        int before = petStore.getPetsForSale().size();
 
         Snake snake = new Snake(
-            PetType.EXOTIC,
-            new BigDecimal ("55.00"),
-            Gender.MALE,
-            99
-    );
+                AnimalType.DOMESTIC,
+                Skin.SCALES,
+                Gender.MALE,
+                new BigDecimal("55.00"),
+                99
+        );
+
         petStore.addPetInventoryItem(snake);
-        assertEquals(sizeBefore + 1, petStore.getPetsForSale().size());
+        assertEquals(before + 1, petStore.getPetsForSale().size());
 
         petStore.soldPetItem(snake);
-        assertEquals(sizeBefore, petStore.getPetsForSale().size());
-
+        assertEquals(before, petStore.getPetsForSale().size());
     }
-        
+
+
 
     @Test
     @DisplayName("Print Inventory Test")

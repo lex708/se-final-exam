@@ -7,7 +7,7 @@ public enum PetType  {
     BIRD("Chirp"),
     CAT("Meow"),
     DOG("Bark"),
-    SNAKE("Psss"),
+    SNAKE("Hiss"),
     UNKNOWN("");
 
     public final String speak;

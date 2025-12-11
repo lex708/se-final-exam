@@ -1,38 +1,59 @@
 package tests;
- import animals.petstore.pet.attributes.Gender;
- import animals.petstore.pet.attribute.petType;
- import animals.petstore.pet.type.sanke;
- import org.junit.jupiter.api.Test;
 
-import java.math.BigDEcimal;
+import animals.AnimalType;
+import animals.petstore.pet.attributes.Gender;
+import animals.petstore.pet.attributes.Skin;
+import animals.petstore.pet.types.Snake;
+import org.junit.jupiter.api.Test;
+
+import java.math.BigDecimal;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 public class SnakeTest {
-  @test
-  public void testSnakeBasicProperties() {
-    Snake s = new Snake (PetType.EXOTIC, new BigDecimal("99.99"), Gender.Male,7);
 
-    assertEquals(PetTYpe.EXOTIC, s.getPetType());
-    assertEquals(Gender.Male, s.getGender());
-    assertEquals(new BigDEcimal("99.99"), s.getCost());
-    assertEquals(7, s.getPetStoreID());
+
+  @Test
+  public void snakeConstructorTest() {
+    Snake s = new Snake(
+            AnimalType.DOMESTIC,
+            Skin.SCALES,
+            Gender.FEMALE,
+            new BigDecimal("55.00"),
+            10
+    );
+
+    assertEquals(Gender.FEMALE, s.getGender());
+    assertEquals(10, s.getPetStoreId());
+    assertEquals(0, new BigDecimal("55.00").compareTo(s.getCost()));
   }
 
-  @test
-  public void testSnakeSpeak() {
-    Snake s = new Snake(PetType.EXOTIC, new BigDEcimal("25.00"), Gender.FEMALE);
-    assertEquals("Hiss!", s.speak());
-  }
-  @test
-  public void testSnakeToString() {
-    Snake s = new Snake(PetType.EXOTIC, new BigDEcimal("25.00", Gender.Female, 3);
+  @Test
+  public void snakeToStringNoStoreIdTest() {
+    Snake s = new Snake(
+            AnimalType.DOMESTIC,
+            Skin.SCALES,
+            Gender.MALE,
+            new BigDecimal("12.00")
+    );
+
     String out = s.toString();
-
-    assertTrue(out.contains("Snake"));
-    assertTrue(out.contains("type=EXOTIC"));
-    assertTrue(out.contains("id=3"));
+    assertTrue(out.contains("gender"));
+    assertFalse(out.contains("pet store id"));
   }
 
+  @Test
+  public void snakeToStringWithStoreIdTest() {
+    Snake s = new Snake(
+            AnimalType.DOMESTIC,
+            Skin.SCALES,
+            Gender.FEMALE,
+            new BigDecimal("12.00"),
+            44
+    );
+
+    String out = s.toString();
+    assertFalse(out.contains("pet store id"));
+    assertTrue(out.contains("44"));
+  }
 }
-               
